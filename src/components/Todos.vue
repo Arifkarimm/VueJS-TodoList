@@ -1,12 +1,19 @@
 <template>
   <div>
-    <h1>Todos</h1>
+    <div v-bind:key="todo.id" v-for="todo in newTodo">
+      <TodoItem v-bind:moveTodo="todo" />
+    </div>
   </div>
 </template>
 
 <script>
+import TodoItem from "./TodoItem";
 export default {
-  name: "Todos"
+  name: "Todos",
+  props: ["newTodo"],
+  components: {
+    TodoItem
+  }
 };
 </script>
 
