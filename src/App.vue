@@ -40,10 +40,18 @@ export default {
 
   methods: {
     deleteTodo(id) {
-      this.todos = this.todos.filter(item => item.id !== id);
+      axios
+        .delete(`https://jsonplaceholder.typicode.com/todos${id}`)
+        .then((this.todos = this.todos.filter(item => item.id !== id)));
     },
     AddTodo(newTodo) {
-      this.todos = [...this.todos, newTodo];
+      const { title, completed } = newTodo;
+      axios
+        .post("https://jsonplaceholder.typicode.com/todos", {
+          title,
+          completed
+        })
+        .then(res => (this.todos = [...this.todos, res.data]));
     }
   },
   created() {
