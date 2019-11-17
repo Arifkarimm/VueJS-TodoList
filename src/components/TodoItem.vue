@@ -4,6 +4,10 @@
       <p>
         <input type="checkbox" v-on:change="markCompleted" />
         {{moveTodo.title}}
+        <button
+          v-on:click="$emit('delete-todo', moveTodo.id)"
+          class="del"
+        >Delete</button>
       </p>
     </div>
   </div>
@@ -33,11 +37,11 @@ export default {
 }
 
 .del {
-  background: #ff0000;
+  background: #000;
   color: #fff;
   border: none;
   padding: 5px 9px;
-  border-radius: 50%;
+  border-radius: 5px;
   cursor: pointer;
   float: right;
 }
