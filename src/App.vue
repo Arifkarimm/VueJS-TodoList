@@ -1,8 +1,10 @@
 <template>
   <div id="app">
-    <Header />
-    <AddTodo v-on:add-todo="AddTodo" />
-    <Todos v-bind:newTodo="todos" v-on:delete-todo="deleteTodo" />
+    <div class="container">
+      <Header />
+      <AddTodo v-on:add-todo="AddTodo" />
+      <Todos v-bind:newTodo="todos" v-on:delete-todo="deleteTodo" />
+    </div>
   </div>
 </template>
 
@@ -10,6 +12,7 @@
 import Todos from "./components/Todos";
 import AddTodo from "./components/AddTodo";
 import Header from "./components/Header";
+import axios from "axios";
 
 export default {
   name: "app",
@@ -42,6 +45,11 @@ export default {
     AddTodo(newTodo) {
       this.todos = [...this.todos, newTodo];
     }
+  },
+  created() {
+    axios
+      .get("https://jsonplaceholder.typicode.com/todos?_limit=5")
+      .then(res => (this.todos = res.data));
   }
 };
 </script>
@@ -57,7 +65,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   line-height: 1.4;
 }
-
+.container {
+  max-width: 100%;
+}
 .btn {
   display: inline-block;
   border: none;

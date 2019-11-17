@@ -30,6 +30,8 @@ export default {
   background: #f4f4f4;
   padding: 10px;
   border-bottom: 1px #ccc dotted;
+  width: 600px;
+  margin: 0 auto;
 }
 
 .is-complete {
