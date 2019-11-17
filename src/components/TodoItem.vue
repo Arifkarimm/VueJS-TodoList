@@ -5,7 +5,7 @@
         <input type="checkbox" v-on:change="markCompleted" />
         {{moveTodo.title}}
         <button
-          v-on:click="$emit('delete-todo', moveTodo.id)"
+          @click="$emit('delete-todo', moveTodo.id)"
           class="del"
         >Delete</button>
       </p>
